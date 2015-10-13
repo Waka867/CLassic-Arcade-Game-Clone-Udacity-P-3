@@ -1,7 +1,8 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(loc) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
+    this.loc = loc;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -27,13 +28,17 @@ Enemy.prototype.render = function() {
 
 var Player = function(){
 
-
+    this.sprite = 'images/char-boy.png';
+    this.update();
+    this.handleInput();
+    this.render();
 };
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-
+// var allEnemies = new array[Enemy()];
+// var player = Player();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -47,3 +52,6 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+
+
