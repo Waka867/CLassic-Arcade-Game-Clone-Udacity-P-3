@@ -1,37 +1,26 @@
 // Enemies our player must avoid
-var Enemy = function(x, y) {
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
     this.x = x;
     this.y = y;
-    // this.speed = speed;
-    // var obj = {};
-    // return obj;
-
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
 };
 
-
-
-var move = function() {
-    this.loc++;
+Enemy.prototype.move = function(x, y) {
+    this.x++;
 };
 
 
-
-// var amy = Enemy(1);
-// amy.move();
-// var ben = Enemy(9);
+var amy = new Enemy(200, 320, 200);
+amy.move();
+// var ben = Enemy(250, 320, 200);
 // ben.move();
-// var pam = Enemy(4);
+// var pam = Enemy(300, 320, 200);
 // amy.move();
-// var dan = Enemy(2);
+// var dan = Enemy(100, 320, 200);
 // ben.move();
-
 
 
 // Update the enemy's position, required method for game
@@ -52,18 +41,35 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 
 var Player = function(x, y){
-    var x = x;
-    var y = y;
-    Player.handleInput = function(){
-    };
-
+    this.x = x;
+    this.y = y;
     this.sprite = 'images/char-boy.png';
-    Player.render = function(){
-    };
 };
 
 Player.prototype.update = function(dt){
+};
 
+Player.prototype.render = function(x, y){
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+Player.prototype.handleInput = function(direction){
+    if(direction === "up") {
+        this.y -= 90;
+    }
+       if(direction === "down") {
+        this.y += 90;
+    }
+        if(direction ==="left") {
+        this.x -= 101;
+    }
+        if(direction ==="right") {
+        this.x += 101;
+    }
+    // else {
+    //     direction = this.x;
+    //     direction = this.y;
+    // };
 };
 
 // Now instantiate your objects.
@@ -75,7 +81,7 @@ for(var i = 0; i <= 4; i++) {
     pushEnemy = new Enemy();
 };
 
-var player = new Player();
+var player = new Player(200, 420);
 
 
 // This listens for key presses and sends the keys to your
