@@ -19,12 +19,23 @@ Enemy.prototype.move = function(x, y, speed) {
     this.x += this.x++;
 };
 
+Enemy.prototype.checkCollision = function(player){
+    if(player.x < this.x + 75 && player.x + 65 > this.x && player.y < this.y + 50 && 70 + player.y > this.y){
+        player.x = 200;
+        player.y = 420;
+        // player.score -= player.score - 1;
+        // alert("Ouch, you've lost a point! Try again!");
+        document.getElementById("game-sound").innerHTML="<embed src='fail.mp3' hidden=true autostart=true loop=false>";
+    };
+};
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     /* You should multiply any movement by the dt parameter which will ensure the game runs at the same speed for all computers. */
     this.x += this.speed * dt;
     this.reset();
+    this.checkCollision(player);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -62,6 +73,7 @@ Player.prototype.update = function(dt){
         this.x = 200;
         this.y = 420;
         this.score += 1;
+        document.getElementById("game-sound").innerHTML="<embed src='tada.mp3' hidden=true autostart=true loop=false>";
     };
 };
 
@@ -73,23 +85,23 @@ Player.prototype.render = function(x, y){
 Player.prototype.handleInput = function(direction){
     if(direction === "up") {
         this.y -= 90;
+        document.getElementById("game-sound").innerHTML="<embed src='hop.mp3' hidden=true autostart=true loop=false>";
     }
        if(direction === "down") {
         this.y += 90;
+        document.getElementById("game-sound").innerHTML="<embed src='hop.mp3' hidden=true autostart=true loop=false>";
     }
         if(direction ==="left") {
         this.x -= 101;
+        document.getElementById("game-sound").innerHTML="<embed src='hop.mp3' hidden=true autostart=true loop=false>";
     }
         if(direction ==="right") {
         this.x += 101;
+        document.getElementById("game-sound").innerHTML="<embed src='hop.mp3' hidden=true autostart=true loop=false>";
     }
 };
 
 Player.prototype.reset = function(x, y){
-    // if(this.y < 40) {
-    //     this.x = 200;
-    //     this.y = 420;
-    // };
     /* The following if statements limit players from leaving the game board */
     if(this.y > 420) {
         this.y = 420;
@@ -136,3 +148,10 @@ document.addEventListener('keyup', function(e) {
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+// var checkCollisions = function(){
+//     if(allEnemies[].x === player.x && allEnemies[].y === player.y){
+//         Player.x = 200;
+//         Player.y = 420;
+//     };
+// };
