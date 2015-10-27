@@ -1,7 +1,5 @@
 /* Enemy class constructor */
 var Enemy = function(x, y, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -13,7 +11,6 @@ var amy = new Enemy(-90, 320, 200);
 var ben = new Enemy(-100, 220, 100);
 var pam = new Enemy(-100, 140, 500);
 var dan = new Enemy(-120, 70, 300);
-
 
 Enemy.prototype.move = function(x, y, speed) {
     this.x += this.x++;
@@ -29,8 +26,7 @@ Enemy.prototype.checkCollision = function(player){
     };
 };
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
+// Update the enemy's position, required method for game. Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     /* You should multiply any movement by the dt parameter which will ensure the game runs at the same speed for all computers. */
     this.x += this.speed * dt;
@@ -62,9 +58,6 @@ var Player = function(x, y){
     this.score = 0;
     this.sprite = 'images/char-boy.png';
 };
-
-//  Initial player score value
-// Player.score = 0;
 
 /* Player update function */
 Player.prototype.update = function(dt){
@@ -101,8 +94,8 @@ Player.prototype.handleInput = function(direction){
     }
 };
 
+/* The following if statements limit players from leaving the game board */
 Player.prototype.reset = function(x, y){
-    /* The following if statements limit players from leaving the game board */
     if(this.y > 420) {
         this.y = 420;
     };
@@ -114,14 +107,7 @@ Player.prototype.reset = function(x, y){
     };
 };
 
-// Player.prototype.scoreevent = function(){
-
-// };
-
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+// Now instantiate your objects. Place all enemy objects in an array called allEnemies. Place the player object in a variable called player
 
 /* Enemy and player instantiation */
 var allEnemies = [];
@@ -130,8 +116,7 @@ allEnemies.push(amy, ben, pam, dan);
 var player = new Player(200, 420);
 
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// This listens for key presses and sends the keys to your Player.handleInput() method. You don't need to modify this.
 
 /* Player keyboard input listener */
 document.addEventListener('keyup', function(e) {
@@ -140,7 +125,7 @@ document.addEventListener('keyup', function(e) {
         38: 'up',
         39: 'right',
         40: 'down',
-        /* These are for wasd movement */
+        /* The following codes are for WASD movement */
         87: 'up',
         83: 'down',
         65: 'left',
@@ -148,10 +133,3 @@ document.addEventListener('keyup', function(e) {
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-// var checkCollisions = function(){
-//     if(allEnemies[].x === player.x && allEnemies[].y === player.y){
-//         Player.x = 200;
-//         Player.y = 420;
-//     };
-// };
