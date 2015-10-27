@@ -23,7 +23,7 @@ Enemy.prototype.checkCollision = function(player){
         // player.score -= player.score - 1;
         // alert("Ouch, you've lost a point! Try again!");
         document.getElementById("game-sound").innerHTML="<embed src='fail.mp3' hidden=true autostart=true loop=false>";
-    };
+    }
 };
 
 // Update the enemy's position, required method for game. Parameter: dt, a time delta between ticks
@@ -45,8 +45,8 @@ Enemy.prototype.reset = function(dt){
         this.speed = Math.random()*1000;
         if(this.speed <= 200) { /* This if statement keeps the bugs from moving too slowly */
             this.speed += 100;
-        };
-    };
+        }
+    }
 };
 
 // Now write your own Player class. This class requires an update(), render() and a handleInput() method.
@@ -67,7 +67,7 @@ Player.prototype.update = function(dt){
         this.y = 420;
         this.score += 1;
         document.getElementById("game-sound").innerHTML="<embed src='tada.mp3' hidden=true autostart=true loop=false>";
-    };
+    }
 };
 
 Player.prototype.render = function(x, y){
@@ -80,7 +80,7 @@ Player.prototype.handleInput = function(direction){
         this.y -= 90;
         document.getElementById("game-sound").innerHTML="<embed src='hop.mp3' hidden=true autostart=true loop=false>";
     }
-       if(direction === "down") {
+        if(direction === "down") {
         this.y += 90;
         document.getElementById("game-sound").innerHTML="<embed src='hop.mp3' hidden=true autostart=true loop=false>";
     }
@@ -98,13 +98,13 @@ Player.prototype.handleInput = function(direction){
 Player.prototype.reset = function(x, y){
     if(this.y > 420) {
         this.y = 420;
-    };
+    }
     if(this.x < 5){
         this.x = 5;
-    };
+    }
     if(this.x > 400){
         this.x = 400;
-    };
+    }
 };
 
 // Now instantiate your objects. Place all enemy objects in an array called allEnemies. Place the player object in a variable called player
