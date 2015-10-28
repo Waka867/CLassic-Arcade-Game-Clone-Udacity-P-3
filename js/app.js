@@ -20,8 +20,9 @@ Enemy.prototype.checkCollision = function(player){
     if(player.x < this.x + 75 && player.x + 65 > this.x && player.y < this.y + 50 && 70 + player.y > this.y){
         player.x = 200;
         player.y = 420;
-        // player.score -= player.score - 1;
-        // alert("Ouch, you've lost a point! Try again!");
+        player.score -= 1;
+        console.log(player.score);
+		document.getElementById("score").innerHTML = player.score;
         document.getElementById("game-sound").innerHTML="<embed src='fail.mp3' hidden=true autostart=true loop=false>";
     }
 };
@@ -42,7 +43,7 @@ Enemy.prototype.render = function() {
 Enemy.prototype.reset = function(dt){
     if(this.x >= 570){
         this.x = -90;
-        this.speed = Math.random()*1000;
+        this.speed = Math.random() * 1000;
         if(this.speed <= 200) { /* This if statement keeps the bugs from moving too slowly */
             this.speed += 100;
         }
@@ -62,12 +63,19 @@ var Player = function(x, y){
 /* Player update function */
 Player.prototype.update = function(dt){
     this.reset();
+    document.getElementById("score").innerHTML = player.score;
     if(this.y < 40) {
         this.x = 200;
         this.y = 420;
         this.score += 1;
         document.getElementById("game-sound").innerHTML="<embed src='tada.mp3' hidden=true autostart=true loop=false>";
+		console.log(player.score);
+		document.getElementById("score").innerHTML = player.score;
     }
+    if(this.score === 10){
+		alert("CONGRATULATIONS! YOU GOT TO TEN POINTS! Here's a bonus point. Can you do even better? :)");
+		this.score += 1;
+	};
 };
 
 Player.prototype.render = function(x, y){
@@ -114,7 +122,6 @@ var allEnemies = [];
 allEnemies.push(amy, ben, pam, dan);
 
 var player = new Player(200, 420);
-
 
 // This listens for key presses and sends the keys to your Player.handleInput() method. You don't need to modify this.
 
