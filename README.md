@@ -7,4 +7,4 @@ When going to the game you'll first notice an alert that will come up and explai
 Once you have finished, click OK to begin the game. Your goal is to reach ten points, and once you do, you can see how many points you can get! Game background audio is designed to automatically start once you begin the game, however background audio controls are provided at the bottom of the screen. With these controls you can pause, play, mute and adjust the volume of the background audio.
 
 
-Game by Ledwing Hernandez - ledwing.hernandez@gmail.com - www.ledwinghernandez@gmail.com
+Game by Ledwing Hernandez - ledwing.hernandez@gmail.com - www.ledwinghernandez.com
