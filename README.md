@@ -1,5 +1,7 @@
 Hello! Thank you for playing my take on the classic Frogger style game, built with Javascript.
 
+To start click on the file named "index.html" in the game folder. If the file does not open in a web browser, ou can right click and go to "open with" to specify a browser of your choice.
+
 When going to the game you'll first notice an alert that will come up and explain the object of the game. If for some reason this alert does not come up, please make sure Javascript is enabled in your browser settings. The game will not function at all if Javascript has been disabled. For your reference, the instructional prompt reads:
 
 "Reach the water by pressing the directional keys to avoid the bugs. Once you get to the water you'll be awarded a point. Watch out! If you get hit by a bug you will lose a point! Audio controls are at the bottom of the page."
